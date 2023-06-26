@@ -1,0 +1,7 @@
+.container {
+    padding-bottom: 2px;
+}
+
+.bordered {
+    border-bottom: solid 2px #EEC110;
+}
