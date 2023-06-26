@@ -24,7 +24,7 @@ export type SigninValues_T = {
 
 const SigninForm = () => {
 
-    const { register, handleSubmit } = useForm<SigninValues_T>()
+    const { register, handleSubmit, formState: { errors } } = useForm<SigninValues_T>()
     const [loading, setLoading] = useState(false)
 
     const dispatch = useAppDispatch()
@@ -49,14 +49,17 @@ const SigninForm = () => {
             <div className={styles.container}>
                 <LoginField
                     register={register}
+                    errors={errors}
                 />
 
                 <PasswordField
                     register={register}
+                    errors={errors}
                 />
 
                 <Password2Field
                     register={register}
+                    errors={errors}
                 />
 
                 <CheckboxField
@@ -68,7 +71,7 @@ const SigninForm = () => {
                         <CircularProgress size={20} color='warning' />
                         :
                         <FormButton>
-                            Войти
+                            Создать аккаунт
                         </FormButton>
                 }
 

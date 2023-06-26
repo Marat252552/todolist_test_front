@@ -1,10 +1,10 @@
 import FormText from '../../../shared/FormText'
 import FormInput from '../../../ui/inputs/FormInput'
-import { UseFormRegister } from 'react-hook-form'
+import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import { LoginValues_T } from '..'
 
 
-const LoginField = ({ register }: { register: UseFormRegister<LoginValues_T> }) => {
+const EmailField = ({ register, errors }: { register: UseFormRegister<LoginValues_T>, errors: FieldErrors<LoginValues_T> }) => {
 
 
     return <FormInput
@@ -13,11 +13,12 @@ const LoginField = ({ register }: { register: UseFormRegister<LoginValues_T> }) 
             maxLength: 20,
             pattern: {
                 value: /^[a-z0-9]+$/i,
-                message: 'Допустимы только латинские символы'
+                message: 'Только латинские символы'
             },
         })}
+        label={errors.login?.message}
         placeholder='Введите логин'
     />
 }
 
-export default LoginField
+export default EmailField

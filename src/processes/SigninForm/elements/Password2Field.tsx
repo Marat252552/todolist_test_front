@@ -1,10 +1,10 @@
 import { forwardRef } from 'react'
 import FormInput from '../../../ui/inputs/FormInput'
-import { UseFormRegister } from 'react-hook-form'
+import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import { SigninValues_T } from '..'
 
 
-const Password2Field = ({ register }: { register: UseFormRegister<SigninValues_T> }) => {
+const Password2Field = ({ register, errors }: { register: UseFormRegister<SigninValues_T>, errors: FieldErrors<SigninValues_T> }) => {
     return <FormInput
         {...register('password2', {
             required: 'Подтвердите пароль',
@@ -14,6 +14,7 @@ const Password2Field = ({ register }: { register: UseFormRegister<SigninValues_T
                 }
             }
         })}
+        label={errors.password2?.message}
         type='password'
         placeholder='Подтвердите пароль'
     />

@@ -4,13 +4,13 @@ import FormInput from '../../ui/inputs/FormInput'
 import FormText from '../../shared/FormText'
 import CustomCheckbox from '../../ui/CustomCheckbox'
 import FormButton from '../../ui/buttons/FormButton'
-import LoginField from './elements/LoginField'
+import EmailField from './elements/EmailField'
 import PasswordField from './elements/PasswordField'
 import CheckboxField from './elements/CheckboxField'
 import { CircularProgress } from '@mui/material'
 import { useAppDispatch } from '../../state/hooks'
 import userSlice from '../../state/Reducers/UserReducer'
-import {useState} from 'react'
+import { useState } from 'react'
 import { message } from 'antd'
 import loginAPI from '../../shared/api/actions/loginAPI'
 import Spinner from '../../ui/Spinner'
@@ -23,7 +23,7 @@ export type LoginValues_T = {
 
 const LoginForm = () => {
 
-    const { register, handleSubmit } = useForm<LoginValues_T>()
+    const { register, handleSubmit, formState: { errors } } = useForm<LoginValues_T>()
 
     const [loading, setLoading] = useState(false)
 
@@ -47,24 +47,30 @@ const LoginForm = () => {
     return <>
         <form style={{ width: '100%' }} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.container}>
-                <LoginField
+                <EmailField
                     register={register}
+                    errors={errors}
                 />
 
                 <PasswordField
                     register={register}
+                    errors={errors}
                 />
 
-                <CheckboxField
-                    register={register}
-                />
+                <div style={{display: 'flex', gap: '10px', width: '100%', alignItems: 'center'}}>
+                    <CheckboxField
+                        register={register}
+                    />
+                    <FormText>Запомнить меня</FormText>
+                </div>
+
 
                 {
                     loading ?
                         <Spinner />
                         :
                         <FormButton>
-                            Создать аккаунт
+                            Войти
                         </FormButton>
                 }
             </div>

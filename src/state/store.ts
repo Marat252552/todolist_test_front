@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userSlice from "./Reducers/UserReducer";
+import cardsSlice from "./Reducers/CardsReducer";
 
 // Создаем rootReducer
 const rootReducer = combineReducers({
     userReducer: userSlice.reducer,
+    cardsReducer: cardsSlice.reducer
 })
 // Создаем функцию, в которой конфигурируем redux хранилище
 export const setupStore = () => {

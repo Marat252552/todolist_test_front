@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 5px;
+    border: solid 1px gray;
+    border-radius: 10px;
+}
+
+.first_module {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%
+}
+
+.second_module {
+    display: flex;
+    align-items: center;
+}

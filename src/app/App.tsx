@@ -3,6 +3,7 @@ import Router from "./controllers/Router"
 import LoggedChecker from './controllers/LoggedChecker'
 import { setupStore } from '../state/store'
 import { Provider } from 'react-redux'
+import DataLoader from './controllers/DataLoader'
 
 const store = setupStore()
 
@@ -11,7 +12,9 @@ const App = () => {
     <div className={styles.container}>
       <Provider store={store}>
         <LoggedChecker>
-          <Router />
+          <DataLoader>
+            <Router />
+          </DataLoader>
         </LoggedChecker>
       </Provider>
 
