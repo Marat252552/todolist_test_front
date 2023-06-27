@@ -4,7 +4,6 @@ import styles from './lib/styles.module.css'
 import CreateIcon from '@mui/icons-material/Create';
 import { useState } from 'react';
 import Spinner from '../../ui/Spinner';
-import FormText from '../../shared/FormText';
 import Editor from './elements/Editor';
 import CompleteCheckbox from './elements/CompleteCheckbox';
 import DeleteCardButton from './elements/DeleteCardButton';
@@ -41,12 +40,12 @@ const CardItem = ({ card }: { card: Card_T }) => {
 
         <div className={styles.second_module}>
 
-            <Button>
+            <Button onClick={() => { setEditActive(prev => !prev) }}>
                 {
                     editLoading ?
                         <Spinner />
                         :
-                        <CreateIcon onClick={() => { setEditActive(true) }} />
+                        <CreateIcon />
                 }
 
             </Button>

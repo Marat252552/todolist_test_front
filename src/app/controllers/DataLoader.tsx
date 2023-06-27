@@ -7,13 +7,13 @@ import getCardsAPI from "../../shared/api/actions/getCardsAPI"
 
 const DataLoader = ({ children }: { children: any }) => {
 
-    const { email } = useAppSelector(state => state.userReducer.user)
+    const { isAuthorized } = useAppSelector(state => state.userReducer)
 
     const dispatch = useAppDispatch()
     const { loadCardsBundle } = cardsSlice.actions
 
     useEffect(() => {
-        if (!email) return
+        if (!isAuthorized) return
         const fetchCards = async () => {
             try {
                 const { data } = await getCardsAPI()
@@ -23,7 +23,7 @@ const DataLoader = ({ children }: { children: any }) => {
             }
         }
         fetchCards()
-    }, [email])
+    }, [isAuthorized])
 
     return children
 }

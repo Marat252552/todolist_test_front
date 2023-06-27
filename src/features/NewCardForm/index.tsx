@@ -13,6 +13,7 @@ const NewCardForm = () => {
     const { addCard } = cardsSlice.actions
 
     const onSearch = async () => {
+        if(!value) return
         setLoading(true)
         try {
             const {data} = await createCardAPI({value})

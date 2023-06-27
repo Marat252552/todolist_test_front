@@ -3,7 +3,6 @@ import FormInput from "../../../ui/inputs/FormInput"
 import FormButton from "../../../ui/buttons/FormButton"
 import styles from './../lib/styles.module.css'
 import { message } from "antd"
-import claimRestoreLinkAPI from "../../../shared/api/actions/claimRestoreLink"
 import { useState } from "react"
 import Spinner from "../../../ui/Spinner"
 import { useNavigate, useParams } from "react-router-dom"

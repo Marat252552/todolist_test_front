@@ -12,6 +12,7 @@ import { message } from 'antd'
 import loginAPI from '../../shared/api/actions/loginAPI'
 import Spinner from '../../ui/Spinner'
 import { useNavigate } from 'react-router-dom'
+import JustLine from '../../ui/JustLine'
 
 export type LoginValues_T = {
     email: string,
@@ -34,7 +35,7 @@ const LoginForm = () => {
     const onSubmit = async (values: LoginValues_T) => {
         setLoading(true)
         try {
-            const {data} = await loginAPI(values)
+            const { data } = await loginAPI(values)
             dispatch(setUser(values.email))
             localStorage.setItem('access_token', data.AccessToken)
         } catch (e: any) {
@@ -75,8 +76,9 @@ const LoginForm = () => {
                             Войти
                         </FormButton>
                 }
-                <div className={styles.just_line}></div>
-                <div onClick={() => navigate('/restore')} style={{ width: '100%', display: 'flex', cursor: 'pointer' }}>
+                <JustLine />
+
+                <div onClick={() => navigate('/restore')} style={{ width: '100%', cursor: 'pointer' }}>
                     <FormText>Забыли пароль?</FormText>
                 </div>
             </div>

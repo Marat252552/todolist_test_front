@@ -1,22 +1,30 @@
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
-import LoginPage from '../../pages/AuthPage'
+import AuthPage from '../../pages/AuthPage'
 import MainPage from '../../pages/MainPage'
-import { useAppSelector } from '../../state/hooks'
+import { useAppDispatch, useAppSelector } from '../../state/hooks'
 import RestorePasswordPage from '../../pages/RestorePasswordPage'
 import SetNewPasswordPage from '../../pages/SetNewPasswordPage'
+import userSlice from '../../state/Reducers/UserReducer'
 
 
 const Router = () => {
 
-  const { email } = useAppSelector(state => state.userReducer.user)
+  const { isAuthorized } = useAppSelector(state => state.userReducer)
+  const dispatch = useAppDispatch()
+  const { setIsAuthorized } = userSlice.actions
+
+  if (localStorage.getItem('access_token')) {
+    console.log('wadopawkl')
+    dispatch(setIsAuthorized(true))
+  }
 
   return <HashRouter>
     <Routes>
-      {email && <Route path='/cards' Component={MainPage} />}
+      {isAuthorized && <Route path='/cards' Component={MainPage} />}
       <Route path='/restore' Component={RestorePasswordPage} />
-      {!email && <Route path='/login' Component={LoginPage} />}
+      {!isAuthorized && <Route path='/auth' Component={AuthPage} />}
       <Route path='/new_password/:key' Component={SetNewPasswordPage} />
-      <Route path='*' element={<Navigate to={email ? '/cards' : '/login'} />} />
+      <Route path='*' element={<Navigate to={isAuthorized ? '/cards' : '/auth'} />} />
     </Routes>
   </HashRouter>
 }

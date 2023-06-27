@@ -8,8 +8,3 @@
     box-sizing: border-box;
     flex-direction: column;
 }
-
-.just_line {
-    border-bottom: solid 1px #5D5175;
-    width: 100%;
-}

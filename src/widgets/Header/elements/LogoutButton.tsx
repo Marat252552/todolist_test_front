@@ -9,7 +9,7 @@ const LogoutButton = () => {
 
     const [loading, setLoading] = useState(false)
     const dispatch = useAppDispatch()
-    const { resetUserState } = userSlice.actions
+    const { resetUserState, setIsAuthorized } = userSlice.actions
 
     const logout = async () => {
         setLoading(true)
@@ -17,6 +17,7 @@ const LogoutButton = () => {
             await logoutAPI()
             dispatch(resetUserState())
             localStorage.removeItem('access_token')
+            dispatch(setIsAuthorized(false))
         } catch (e) {
             console.log(e)
         } finally {

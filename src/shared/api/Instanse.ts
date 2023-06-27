@@ -11,7 +11,6 @@ const instanse = axios.create({
 
 // Interceptor, устанавливающий в headers каждого запроса AccessToken
 instanse.interceptors.request.use((config: any) => {
-    console.log('interceptor')
     config.headers.Authorization = `Bearer ${localStorage.getItem('access_token')}`
     return config
 })

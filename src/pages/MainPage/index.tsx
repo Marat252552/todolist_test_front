@@ -7,7 +7,7 @@ import Body from "./elements/Body"
 const MainPage = () => {
 
     return <>
-        <div style={{display: 'flex', width: '100%', alignItems: 'center', flexDirection: 'column'}}>
+        <div style={{display: 'flex', width: '100%', alignItems: 'center', flexDirection: 'column', height: '100%'}}>
             <Header />
             <MainPageTemplate>
 
@@ -15,9 +15,7 @@ const MainPage = () => {
 
             </MainPageTemplate>
         </div>
-
     </>
-
 }
 
 export default MainPage

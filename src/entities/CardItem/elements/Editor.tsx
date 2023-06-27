@@ -1,16 +1,16 @@
 import { useForm } from "react-hook-form"
-import { Card_T } from "../../../shared/types"
 import { message } from "antd"
 import { useAppDispatch } from "../../../state/hooks"
 import cardsSlice from "../../../state/Reducers/CardsReducer"
 import updateCardAPI from "../../../shared/api/actions/updateCardAPI"
 import { TextField } from '@mui/material'
+import { Editor_T } from "../lib/types"
 
 type Values_T = {
     newValue: string
 }
 
-const Editor = ({ card, setEditLoading, setEditActive }: { card: Card_T, setEditLoading: (value: boolean) => void, setEditActive: (value: boolean) => void }) => {
+const Editor: Editor_T = ({ card, setEditLoading, setEditActive }) => {
 
     const { _id: card_id, completed, value, user_id } = card
 
@@ -23,7 +23,6 @@ const Editor = ({ card, setEditLoading, setEditActive }: { card: Card_T, setEdit
     const { updateCard } = cardsSlice.actions
 
     const onSubmit = async ({ newValue }: Values_T) => {
-        console.log(newValue)
         setEditLoading(true)
         try {
             await updateCardAPI({ card_id, completed, value: newValue })

@@ -8,7 +8,7 @@ const Header = () => {
     const {email} = useAppSelector(state => state.userReducer.user)
 
     return <div className={styles.container}>
-        {email || 'Имя пользователя'}
+        <span>{email || 'Почта пользователя'}</span>
         <LogoutButton />
     </div>
 }

@@ -6,12 +6,17 @@ import { message } from "antd"
 import claimRestoreLinkAPI from "../../../shared/api/actions/claimRestoreLink"
 import { useState } from "react"
 import Spinner from "../../../ui/Spinner"
+import JustLine from "../../../ui/JustLine"
+import { useNavigate } from "react-router-dom"
+import FormText from "../../../shared/FormText"
 
 type Values_T = {
     email: string
 }
 
 const Form = () => {
+
+    const navigate = useNavigate()
 
     const { register, formState: { errors }, handleSubmit } = useForm<Values_T>({
         mode: 'onSubmit'
@@ -55,6 +60,11 @@ const Form = () => {
                     Далее
                 </FormButton>
         }
+        <JustLine />
+
+        <div onClick={() => navigate('/auth')} style={{ width: '100%', cursor: 'pointer' }}>
+            <FormText>Вспомнили пароль?</FormText>
+        </div>
 
     </form>
 }

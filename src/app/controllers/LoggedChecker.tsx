@@ -18,6 +18,7 @@ const LoggedChecker = ({ children }: { children: any }) => {
         }
     }
     useEffect(() => {
+        
         loggedCheck()
     }, [])
     

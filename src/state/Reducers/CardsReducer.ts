@@ -27,8 +27,8 @@ const cardsSlice = createSlice({
         },
         updateCard(state, action: PayloadAction<{card: Card_T}>) {
             const {card} = action.payload
-            state.cards = state.cards.filter(el => el._id !== card._id)
-            state.cards.push(card)
+            const index = state.cards.findIndex(el => el._id === card._id)
+            state.cards[index] = card
         }
     }
 })
