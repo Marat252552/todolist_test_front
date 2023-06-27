@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import styles from './lib/styles.module.css'
 import FormButton from '../../ui/buttons/FormButton'
-import LoginField from './elements/LoginField'
+import LoginField from './elements/EmailField'
 import PasswordField from './elements/PasswordField'
 import Password2Field from './elements/Password2Field'
 import { useState } from 'react'

@@ -1,9 +1,12 @@
 import FormInput from '../../../ui/inputs/FormInput'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
-import { LoginValues_T } from '..'
+import { PasswordField_T } from '../lib/types'
 
 
-const PasswordField = ({ register, errors }: { register: UseFormRegister<LoginValues_T>, errors: FieldErrors<LoginValues_T> }) => {
+const PasswordField: PasswordField_T = ({ register, errors }) => {
+    
+    const minLengthMessage = (errors.password?.type === 'minLength')? 'Минимум 6 символов' : undefined
+    const maxLengthMessage = (errors.password?.type === 'maxLength')? 'Максимум 50 символов' : undefined
+    
     return <FormInput
         {...register('password', {
             required: 'Введите пароль',
@@ -13,7 +16,7 @@ const PasswordField = ({ register, errors }: { register: UseFormRegister<LoginVa
             }
         })}
         type='password'
-        label={errors.password?.message}
+        label={errors.password?.message || minLengthMessage || maxLengthMessage}
         placeholder='Введите пароль'
     />
 }
