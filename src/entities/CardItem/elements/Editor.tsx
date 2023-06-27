@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form"
 import { Card_T } from "../../../shared/types"
-import TransparentInput from "../../../ui/inputs/TransparentInput"
 import { message } from "antd"
 import { useAppDispatch } from "../../../state/hooks"
 import cardsSlice from "../../../state/Reducers/CardsReducer"

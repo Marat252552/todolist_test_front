@@ -1,8 +1,7 @@
 import { Input, message } from 'antd'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useAppDispatch } from '../../state/hooks'
 import cardsSlice from '../../state/Reducers/CardsReducer'
-import { Card_T } from '../../shared/types'
 import createCardAPI from '../../shared/api/actions/createCardAPI'
 import Spinner from '../../ui/Spinner'
 

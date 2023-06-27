@@ -1,15 +1,11 @@
-.container {
+.form_container {
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
     padding: 20px;
     gap: 20px;
-    width: 100%;
-    box-sizing: border-box;
     flex-direction: column;
-}
-
-.just_line {
-    border-bottom: solid 1px #5D5175;
-    width: 100%;
+    background-color: #30274e;
+    border-radius: 20px;
 }

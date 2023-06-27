@@ -3,12 +3,11 @@ import { SigninValues_T } from '..'
 import CustomCheckbox from '../../../ui/CustomCheckbox'
 
 const CheckboxField = ({ register }: { register: UseFormRegister<SigninValues_T> }) => {
-    return <div style={{ width: '100%', display: 'flex' }}>
+    return <div style={{ display: 'flex' }}>
         <CustomCheckbox
             {...register('remember')}
         />
     </div>
-
 }
 
 export default CheckboxField

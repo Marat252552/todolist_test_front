@@ -1,23 +1,22 @@
-import FormText from '../../../shared/FormText'
 import FormInput from '../../../ui/inputs/FormInput'
 import { FieldErrors, UseFormRegister } from 'react-hook-form'
 import { SigninValues_T } from '..'
 
 
-const LoginField = ({ register, errors }: { register: UseFormRegister<SigninValues_T>, errors: FieldErrors<SigninValues_T> }) => {
+const EmailField = ({ register, errors }: { register: UseFormRegister<SigninValues_T>, errors: FieldErrors<SigninValues_T> }) => {
 
     return <FormInput
-        {...register('login', {
-            required: 'Введите логин',
-            maxLength: 20,
+        {...register('email', {
+            required: 'Введите почту',
+            maxLength: 50,
             pattern: {
-                value: /^[a-z0-9]+$/i,
-                message: 'Допустимы только латинские символы'
-            },
+                value: /\S+@\S+\.\S+/,
+                message: 'Неверный формат почты'
+            }
         })}
-        label={errors.login?.message}
-        placeholder='Введите логин'
+        label={errors.email?.message}
+        placeholder='Введите почту'
     />
 }
 
-export default LoginField
+export default EmailField

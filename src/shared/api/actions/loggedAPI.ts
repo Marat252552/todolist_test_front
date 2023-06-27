@@ -3,7 +3,7 @@ import instanse from "../Instanse"
 
 
 type loggedAPI_T = () => Promise<AxiosResponse<{user: {
-    login: string
+    email: string
 }}>>
 
 const loggedAPI: loggedAPI_T = () => {

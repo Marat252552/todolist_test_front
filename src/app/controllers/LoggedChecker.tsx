@@ -12,7 +12,7 @@ const LoggedChecker = ({ children }: { children: any }) => {
     let loggedCheck = async () => {
         try {
             let { data } = await loggedAPI()
-            dispatch(setUser(data.user.login))
+            dispatch(setUser(data.user.email))
         } catch (e) {
             console.log(e)
         }

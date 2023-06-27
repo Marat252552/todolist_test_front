@@ -6,11 +6,3 @@
     justify-content: center;
     align-items: center;
 }
-
-.options_module {
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    justify-content: center;
-}
-

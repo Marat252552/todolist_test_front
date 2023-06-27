@@ -1,40 +1,41 @@
 import { useForm } from 'react-hook-form'
 import styles from './lib/styles.module.css'
-import FormInput from '../../ui/inputs/FormInput'
 import FormText from '../../shared/FormText'
-import CustomCheckbox from '../../ui/CustomCheckbox'
 import FormButton from '../../ui/buttons/FormButton'
 import EmailField from './elements/EmailField'
 import PasswordField from './elements/PasswordField'
 import CheckboxField from './elements/CheckboxField'
-import { CircularProgress } from '@mui/material'
 import { useAppDispatch } from '../../state/hooks'
 import userSlice from '../../state/Reducers/UserReducer'
 import { useState } from 'react'
 import { message } from 'antd'
 import loginAPI from '../../shared/api/actions/loginAPI'
 import Spinner from '../../ui/Spinner'
+import { useNavigate } from 'react-router-dom'
 
 export type LoginValues_T = {
-    login: string,
+    email: string,
     password: string,
     remember: boolean
 }
 
 const LoginForm = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm<LoginValues_T>()
+    const { register, handleSubmit, formState: { errors } } = useForm<LoginValues_T>({
+        mode: 'onSubmit'
+    })
 
     const [loading, setLoading] = useState(false)
 
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     const { setUser } = userSlice.actions
 
     const onSubmit = async (values: LoginValues_T) => {
         setLoading(true)
         try {
             await loginAPI(values)
-            dispatch(setUser(values.login))
+            dispatch(setUser(values.email))
         } catch (e: any) {
             const message_info = e?.response?.data?.message || 'Произошла непредвиденная ошибка'
             console.log(e)
@@ -57,7 +58,7 @@ const LoginForm = () => {
                     errors={errors}
                 />
 
-                <div style={{display: 'flex', gap: '10px', width: '100%', alignItems: 'center'}}>
+                <div style={{ display: 'flex', gap: '10px', width: '100%', alignItems: 'center' }}>
                     <CheckboxField
                         register={register}
                     />
@@ -73,9 +74,14 @@ const LoginForm = () => {
                             Войти
                         </FormButton>
                 }
+                <div className={styles.just_line}></div>
+                <div onClick={() => navigate('/restore/waoidwaoikdwa')} style={{ width: '100%', display: 'flex', cursor: 'pointer' }}>
+                    <FormText>Забыли пароль?</FormText>
+                </div>
             </div>
 
         </form>
+
 
     </>
 

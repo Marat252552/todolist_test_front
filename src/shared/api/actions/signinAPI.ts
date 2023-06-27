@@ -2,14 +2,14 @@ import { AxiosResponse } from "axios"
 import instanse from "../Instanse"
 
 type data_T = {
-    login: string,
+    email: string,
     password: string,
     remember: boolean
 }
 
 type signinAPI_T = (data: data_T) => Promise<AxiosResponse<{
     user: {
-        login: string
+        email: string
     },
     AccessToken: string
 }>>

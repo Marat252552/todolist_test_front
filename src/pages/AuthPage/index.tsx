@@ -4,21 +4,36 @@ import styles from './lib/styles.module.css'
 import Option from './elements/Option'
 import SigninForm from '../../processes/SigninForm'
 import AuthpageTemplate from '../../shared/templates/pages/AuthPageTemplate'
+import Modal from '../../shared/Modal'
+import MainBackground from '../../shared/templates/backgrounds/MainBackground'
+import FormText from '../../shared/FormText'
+import FormContainer from '../../shared/templates/other/FormContainer'
 
 
-const LoginPage = () => {
+const AuthPage = () => {
 
     const [isLoginForm, setIsLoginForm] = useState(true)
+    const [modalActive, setModalActive] = useState(false)
 
     const toggleForm = () => {
         setIsLoginForm(prev => !prev)
     }
 
-    return (
-        <div className={styles.background}>
-            <AuthpageTemplate>
+    const finishSignin = () => {
+        setIsLoginForm(true)
+        setModalActive(true)
+    }
 
-                <div className={styles.form_container}>
+    return (
+        <MainBackground>
+
+            <Modal active={modalActive} setActive={setModalActive}>
+                <p>На указанную Вами почту отправлено письмо с ссылкой для подтверждения.</p>
+                <p>Перейдите по ней, чтобы закончить регистрацию аккаунта</p>
+            </Modal>
+
+            <AuthpageTemplate>
+                <FormContainer>
                     <div className={styles.options_module}>
 
                         <div style={{ cursor: 'pointer' }} onClick={toggleForm}>
@@ -34,13 +49,17 @@ const LoginPage = () => {
                         isLoginForm ?
                             <LoginForm />
                             :
-                            <SigninForm />
+                            <SigninForm finishSignin={finishSignin} />
                     }
-                </div>
+                </FormContainer>
+
+
 
             </AuthpageTemplate>
-        </div>
+
+        </MainBackground>
+
     )
 }
 
-export default LoginPage
+export default AuthPage
