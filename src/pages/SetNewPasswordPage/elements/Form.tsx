@@ -43,6 +43,7 @@ const Form = () => {
     }
 
     return <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <h3 className={styles.title}>Введите новый пароль</h3>
         <FormInput
             {...register('password', {
                 required: 'Введите пароль',

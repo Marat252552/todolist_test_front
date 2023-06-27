@@ -8,15 +8,15 @@ import SetNewPasswordPage from '../../pages/SetNewPasswordPage'
 
 const Router = () => {
 
-  const {email} = useAppSelector(state => state.userReducer.user)
+  const { email } = useAppSelector(state => state.userReducer.user)
 
   return <HashRouter>
     <Routes>
       {email && <Route path='/cards' Component={MainPage} />}
       <Route path='/restore' Component={RestorePasswordPage} />
       {!email && <Route path='/login' Component={LoginPage} />}
-      <Route path='/set_new_password/:key' Component={SetNewPasswordPage}/>
-      <Route path='*' element={<Navigate to={email? '/cards' : '/login'} />} />
+      <Route path='/new_password/:key' Component={SetNewPasswordPage} />
+      <Route path='*' element={<Navigate to={email ? '/cards' : '/login'} />} />
     </Routes>
   </HashRouter>
 }

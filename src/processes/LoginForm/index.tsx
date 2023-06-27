@@ -34,8 +34,9 @@ const LoginForm = () => {
     const onSubmit = async (values: LoginValues_T) => {
         setLoading(true)
         try {
-            await loginAPI(values)
+            const {data} = await loginAPI(values)
             dispatch(setUser(values.email))
+            localStorage.setItem('access_token', data.AccessToken)
         } catch (e: any) {
             const message_info = e?.response?.data?.message || 'Произошла непредвиденная ошибка'
             console.log(e)
@@ -75,7 +76,7 @@ const LoginForm = () => {
                         </FormButton>
                 }
                 <div className={styles.just_line}></div>
-                <div onClick={() => navigate('/restore/waoidwaoikdwa')} style={{ width: '100%', display: 'flex', cursor: 'pointer' }}>
+                <div onClick={() => navigate('/restore')} style={{ width: '100%', display: 'flex', cursor: 'pointer' }}>
                     <FormText>Забыли пароль?</FormText>
                 </div>
             </div>

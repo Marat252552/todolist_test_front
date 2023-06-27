@@ -21,7 +21,7 @@ const CardItem = ({ card }: { card: Card_T }) => {
 
         <div className={styles.first_module}>
 
-            <CompleteCheckbox card={card} completed={completed}/>
+            <CompleteCheckbox card={card} completed={completed} />
 
             {
                 editActive ?
@@ -31,7 +31,10 @@ const CardItem = ({ card }: { card: Card_T }) => {
                         card={card}
                     />
                     :
-                    <FormText>{value}</FormText>
+                    <div style={{ boxSizing: 'border-box', overflow: 'hidden' }}>
+                        <span >{value} </span>
+                    </div>
+
             }
 
         </div>
@@ -43,7 +46,7 @@ const CardItem = ({ card }: { card: Card_T }) => {
                     editLoading ?
                         <Spinner />
                         :
-                        <CreateIcon onClick={() => {setEditActive(true)}}/>
+                        <CreateIcon onClick={() => { setEditActive(true) }} />
                 }
 
             </Button>

@@ -5,13 +5,16 @@
     padding: 5px;
     border: solid 1px gray;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 .first_module {
     display: flex;
     gap: 10px;
     align-items: center;
-    width: 100%
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .second_module {
