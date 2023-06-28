@@ -41,17 +41,22 @@ const Form = () => {
         }
     }
 
+    const minLengthMessage = (errors.password?.type === 'minLength')? 'Минимум 6 символов' : undefined
+    const maxLengthMessage = (errors.password?.type === 'maxLength')? 'Максимум 50 символов' : undefined
+
     return <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <h3 className={styles.title}>Введите новый пароль</h3>
         <FormInput
             {...register('password', {
                 required: 'Введите пароль',
+                maxLength: 50,
+                minLength: 6,
                 pattern: {
                     value: /^[a-z0-9]+$/i,
                     message: 'Допустимы только латинские символы'
                 }
             })}
-            label={errors.password?.message}
+            label={errors.password?.message || minLengthMessage || maxLengthMessage}
             type='password'
             placeholder='Введите пароль'
         />
