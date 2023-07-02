@@ -13,6 +13,7 @@ const WorkSpace = ({title, cards}: {title: string, cards: Card_T[]}) => {
         </div>
         <div className={styles.content_module}>
             <NewCardForm />
+            {!cards[0] && <div style={{width: '100%', textAlign: 'center'}}>Тут пусто</div>}
             {cards.map(card => <CardItem key={card._id} card={card} />)}
         </div>
 
